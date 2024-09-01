@@ -3,7 +3,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-
+    // comment
     try {
         // send request
         const response = await fetch('http://localhost:5555/auth/logintourist', {
