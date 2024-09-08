@@ -20,6 +20,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
             // Store the token and userId in localStorage
             localStorage.setItem('x-auth-token', result.token);
             localStorage.setItem('userId', result.userId);
+            localStorage.setItem('userType', 'tourist');
             
             alert('Login successful!');
             // Redirect to dashboard

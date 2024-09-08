@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourist Logout</title>
+    <style>
+        /* Logout container styling */
+.logout-container {
+    max-width: 400px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+.logout-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.logout-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.logout-container a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.logout-container a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <div class="logout-container">
+        <h1>You have been logged out</h1>
+        <p>Thank you for visiting. You are now logged out.</p>
+        <p><a href="logintourist.html">Login again</a> or <a href="index.html">Go to Home</a></p>
+    </div>
+
+    <script>
+        // Clear the authentication token and user ID from localStorage
+        localStorage.removeItem('x-auth-token');
+        localStorage.removeItem('userId');
+
+        // Optionally, redirect to the login page automatically after a delay
+        setTimeout(() => {
+            window.location.href = 'logintourist.html';
+        }, 3000); // 3-second delay
+    </script>
+</body>
+</html>

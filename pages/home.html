@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../index.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        nav {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        nav h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        nav button {
+            color: #fff;
+            background-color: #0056b3;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        nav button:hover {
+            background-color: #003d7a;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .list-item {
+            background: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .list-item:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.02);
+        }
+        .list-item h3 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .list-item p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .list-item p strong {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>LOGO</h1>
+        <div id="nav-container">
+            <!-- Navigation button will be dynamically added here -->
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Welcome to Home Page</h1>
+        <div id="lists-container">
+            <!-- List items will be dynamically loaded here -->
+        </div>
+    </div>
+    <script src="../js/home/home.js"></script>
+</body>
+</html>

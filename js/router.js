@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const routes = {
         '/': 'index.html',
-        '/register': 'pages/registertourist.html',
+        '/registertourist': 'pages/registertourist.html',
+        '/registerguide': 'pages/registerguide.html',
         '/login': 'pages/logintourist.html',
         '/dashboard': 'pages/dashboardtourist.html',
     };

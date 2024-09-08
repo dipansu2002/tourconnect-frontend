@@ -3,52 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Tourist Dashboard</title>
     <link rel="stylesheet" href="../index.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        nav {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        nav a, nav button {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 15px;
+            border: none;
+            background: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        nav a {
+            background-color: #0056b3;
+        }
+        nav a:hover {
+            background-color: #003d7a;
+        }
+        nav button {
+            background-color: #0056b3;
+        }
+        nav button:hover {
+            background-color: #003d7a;
+        }
+        .dashboard-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .sidebar {
+            width: 200px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .dashboard-content {
+            flex: 1;
+            padding: 20px;
+        }
+        .tourist-info {
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .list-item {
+            background: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .list-item h3 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .list-item p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .list-item p strong {
+            color: #333;
+        }
+    </style>
 </head>
 <body>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="register.html">Register</a>
-        <a href="login.html">Login</a>
-        <a href="#">Profile</a>
-        <a href="#">Settings</a>
+        <a href="../index.html">Home</a>
+        <button id="logoutButton" class="logoutButton">Logout</button>
     </nav>
     <div class="dashboard-container">
-        <aside class="sidebar">
-            <h2>Menu</h2>
-            <ul>
-                <li><a href="#">Overview</a></li>
-                <li><a href="#">My Tours</a></li>
-                <li><a href="#">Messages</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="#" id="logout">Logout</a></li>
-            </ul>
-        </aside>
         <main class="dashboard-content">
-            <h1>Welcome to Your Dashboard</h1>
-            <p>This is a sample dashboard page. Here you can manage your tours, view messages, and update your settings.</p>
-            <div class="dashboard-cards">
-                <div class="card">
-                    <h3>Card Title 1</h3>
-                    <p>Card content goes here. This could be a summary of recent activities, statistics, or other important information.</p>
-                </div>
-                <div class="card">
-                    <h3>Card Title 2</h3>
-                    <p>Card content goes here. This could be a summary of recent activities, statistics, or other important information.</p>
-                </div>
+            <!-- Tourist Information Section -->
+            <div class="tourist-info" id="tourist-info">
+                <!-- Tourist information will be dynamically loaded here -->
             </div>
+
+            <!-- My Lists Section -->
+            <section id="my-lists">
+                <h2>My Lists</h2>
+                <div id="lists-container">
+                    <!-- List items will be dynamically loaded here -->
+                </div>
+            </section>
         </main>
     </div>
-    <footer class="dashboard-footer">
-        <p>&copy; 2024 Your Company. All rights reserved.</p>
-    </footer>
-    <script>
-        document.getElementById('logout').addEventListener('click', () => {
-            localStorage.removeItem('x-auth-token');
-            localStorage.removeItem('userId');
-            window.location.href = 'login.html';
-        });
-    </script>
+    <script src="../js/dashboard/dashboardTourist.js"></script>
 </body>
 </html>

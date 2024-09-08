@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register for List</title>
+    <title>List Detail</title>
     <link rel="stylesheet" href="../index.css">
     <style>
         body {
@@ -48,48 +48,10 @@
             max-width: 800px;
             margin: auto;
         }
-        .form-container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .form-container h2 {
-            margin: 0;
-            font-size: 1.5em;
-            color: #333;
-        }
-        .form-container p {
-            margin: 10px 0;
-            color: #555;
-        }
-        .form-container label {
-            display: block;
-            margin: 10px 0 5px;
-            color: #333;
-        }
-        .form-container input {
-            width: 100%;
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            margin-bottom: 10px;
-        }
-        .form-container button {
-            background-color: #007BFF;
-            color: #fff;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .form-container button:hover {
-            background-color: #0056b3;
-        }
         .list-detail {
-            margin-top: 20px;
-            padding: 20px;
             background: #fff;
+            padding: 20px;
+            margin: 10px 0;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
@@ -105,6 +67,30 @@
         .list-detail p strong {
             color: #333;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tbody:empty:before {
+            content: "No tourist data available.";
+            display: block;
+            text-align: center;
+            padding: 20px;
+            color: #777;
+        }
     </style>
 </head>
 <body>
@@ -114,22 +100,32 @@
         <button id="logout-button">Logout</button>
     </nav>
     <div class="container">
-        <div class="form-container">
-            <h2>Register for the List</h2>
-            <form>
-                <label for="datefrom">Date From:</label>
-                <input type="date" id="datefrom" name="datefrom" required>
-
-                <label for="dateto">Date To:</label>
-                <input type="date" id="dateto" name="dateto" required>
-
-                <button type="submit">Register</button>
-            </form>
-        </div>
         <div class="list-detail">
-            <!-- Registration result will be displayed here -->
+            <!-- List details will be dynamically loaded here -->
+            <h2 id="list-title">List Title</h2>
+            <p><strong>Description:</strong> <span id="list-description">List Description</span></p>
+            <p><strong>Location:</strong> <span id="list-location">Location</span></p>
+            <p><strong>Status:</strong> <span id="list-status">Status</span></p>
+            <p><strong>Tourists Registered:</strong> <span id="tourists-registered">0</span></p>
+            
+            <!-- Tourist Data Table -->
+            <table id="tourist-table">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Date From</th>
+                        <th>Date To</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Tourist rows will be dynamically loaded here -->
+                </tbody>
+            </table>
         </div>
     </div>
-    <script src="../js/listactions/listregister.js"></script>
+    <script src="../js/listactions/listGuideDetail.js"></script>
 </body>
 </html>

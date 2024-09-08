@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .listcreate-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"], input[type="number"], select, textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        button[type="submit"], button.add-speciality {
+            padding: 10px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover, button.add-speciality:hover {
+            background-color: #4cae4c;
+        }
+
+        .specialities-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .specialities-list {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="listcreate-container">
+        <h1>Create a New List</h1>
+        <form id="listCreateForm">
+            <label for="listtitle">List Title:</label>
+            <input type="text" id="listtitle" name="listtitle" placeholder="Enter list title" required>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" placeholder="Enter location" required>
+
+            <label for="specialities">Specialities:</label>
+            <div class="specialities-container">
+                <input type="text" id="newSpeciality" placeholder="Enter a speciality">
+                <button type="button" class="add-speciality">Add Speciality</button>
+
+                <select id="specialitiesList" multiple>
+                </select>
+            </div>
+
+            <label for="experience">Experience:</label>
+            <textarea id="experience" name="experience" placeholder="Enter experience" required></textarea>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" placeholder="Enter description" required></textarea>
+
+            <button type="submit">Create List</button>
+        </form>
+    </div>
+
+    <script src="../js/listactions/listcreate.js"></script>
+</body>
+</html>
