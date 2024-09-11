@@ -1,8 +1,17 @@
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        // Fetch the token from localStorage
+        // Check for localStorage items
         const token = localStorage.getItem('x-auth-token');
-        console.log(`x-auth-token: ${token}`); 
+        const userId = localStorage.getItem('userId');
+        const userType = localStorage.getItem('userType');
+
+        if (!token || !userId || !userType) {
+            // Show a message if user is not logged in
+            document.body.innerHTML = '<h1>User is not logged in. Please <a href="../index.html">login</a> to continue.</h1>';
+            return;
+        }
+        
+        console.log(`x-auth-token: ${token}`);
 
         // Make the API request
         const response = await fetch('http://localhost:5555/dashboard/guide', {
@@ -42,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             `).join('');
 
             // Add click event listener to list items
-            listsContainer.addEventListener('click', function(event) {
+            listsContainer.addEventListener('click', function (event) {
                 const listItem = event.target.closest('.list-item');
                 if (listItem) {
                     const listId = listItem.getAttribute('data-id');
@@ -55,7 +64,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const errorData = await response.json();
             console.error('Error status:', response.status);
             console.error('Error message:', errorData.message);
-            
+
             if (response.status === 401) {
                 alert(errorData.message);
                 window.location.href = 'login.html';

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (!token || !userId || !userType) {
         // Show a message if user is not logged in
-        document.body.innerHTML = '<h1>User is not logged in. Please <a href="login.html">login</a> to continue.</h1>';
+        document.body.innerHTML = '<h1>User is not logged in. Please <a href="../index.html">login</a> to continue.</h1>';
         return;
     }
 
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.error('Error message:', errorData.message);
 
                 if (response.status === 401) {
-                    document.body.innerHTML = '<h1>Access denied. Please <a href="login.html">login</a> to continue.</h1>';
+                    document.body.innerHTML = '<h1>Access denied. Please <a href="../index.html">login</a> to continue.</h1>';
                 } else if (response.status === 500) {
                     document.body.innerHTML = '<h1>Server error. Please try again later.</h1>';
                 } else if (response.status === 404) {
@@ -93,6 +93,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         await fetchAndDisplayLists('http://localhost:5555/list/listdiplayguidelist');
     } else {
         // Handle unexpected userType
-        document.body.innerHTML = '<h1>Invalid user type. Please <a href="login.html">login</a> again.</h1>';
+        document.body.innerHTML = '<h1>Invalid user type. Please <a href="../index.html">login</a> again.</h1>';
     }
 });

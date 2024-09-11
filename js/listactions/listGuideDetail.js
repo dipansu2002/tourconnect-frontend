@@ -1,5 +1,13 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    // Extract the list ID from the URL
+    const token = localStorage.getItem('x-auth-token');
+    const userId = localStorage.getItem('userId');
+    const userType = localStorage.getItem('userType');
+
+    if (!token || !userId || !userType) {
+        document.body.innerHTML = '<h1>User is not logged in. Please <a href="../index.html">login</a> to continue.</h1>';
+        return;
+    }
+
     const urlParams = new URLSearchParams(window.location.search);
     const listId = urlParams.get('id');
     
@@ -9,11 +17,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        // Fetch the token from localStorage
-        const token = localStorage.getItem('x-auth-token');
-        console.log(`x-auth-token: ${token}`); 
-
-        // Make the API request
         const response = await fetch(`http://localhost:5555/list/listdiplayguidedetail/${listId}`, {
             method: 'GET',
             headers: {
@@ -21,19 +24,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 'x-auth-token': token,
             },
         });
-        console.log(`response: ${response}`); // Log the response
 
-        // Check and handle response status
         if (response.ok) {
             const data = await response.json();
             const list = data.list;
+            console.log(list);
 
-            // Update page with list details
-            const guideData = list.guideData;
-            const touristData = list.touristData;
-
-            // Format tourist data for table
-            const touristsTableRows = touristData.map(tourist => `
+            const touristsTableRows = list.touristData.map(tourist => `
                 <tr>
                     <td>${tourist.touristFirstName}</td>
                     <td>${tourist.touristLastName}</td>
@@ -44,6 +41,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                 </tr>
             `).join('');
 
+            // Check if the list is already closed
+            let closeButtonHtml = '';
+            if (list.liststatus === true) {
+                closeButtonHtml = '<button id="close-list-btn">Close List</button>';
+            }
+
+            // Add Delete button (visible regardless of status)
+            const deleteButtonHtml = '<button id="delete-list-btn">Delete List</button>';
+
             document.querySelector('.list-detail').innerHTML = `
                 <h2>${list.listTitle}</h2>
                 <p><strong>Description:</strong> ${list.listDescription}</p>
@@ -51,9 +57,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <p><strong>Status:</strong> ${list.liststatus}</p>
                 <p><strong>Tourists Registered:</strong> ${list.touristsRegistered}</p>
                 <h3>Guide Information</h3>
-                <p><strong>Name:</strong> ${guideData.guideFirstName} ${guideData.guideLastName}</p>
-                <p><strong>Email:</strong> ${guideData.guideEmailId}</p>
-                <p><strong>Phone:</strong> ${guideData.guidePhoneNo}</p>
+                <p><strong>Name:</strong> ${list.guideData.guideFirstName} ${list.guideData.guideLastName}</p>
+                <p><strong>Email:</strong> ${list.guideData.guideEmailId}</p>
+                <p><strong>Phone:</strong> ${list.guideData.guidePhoneNo}</p>
                 <h3>Tourist Details</h3>
                 <table id="tourist-table">
                     <thead>
@@ -70,26 +76,71 @@ document.addEventListener('DOMContentLoaded', async () => {
                         ${touristsTableRows}
                     </tbody>
                 </table>
+                ${closeButtonHtml} <!-- Close button will only show if status is not "Closed" -->
+                ${deleteButtonHtml} <!-- Delete button is always visible -->
             `;
-        } else {
-            // Log response status and body for debugging
-            const errorData = await response.json();
-            console.error('Error status:', response.status);
-            console.error('Error message:', errorData.message);
-            
-            if (response.status === 401) {
-                alert(errorData.message);
-                window.location.href = 'login.html';
-            } else if (response.status === 404) {
-                alert(errorData.message);
-            } else if (response.status === 500) {
-                alert('An error occurred on the server. Please try again later.');
-            } else {
-                throw new Error('Unexpected status code: ' + response.status);
+
+            // Add event listener to the "Close List" button if it exists
+            if (list.liststatus === true) {
+                document.getElementById('close-list-btn').addEventListener('click', async () => {
+                    try {
+                        const closeResponse = await fetch(`http://localhost:5555/list/liststatusclose/${listId}`, {
+                            method: 'POST',
+                            headers: {
+                                'x-auth-token': token,
+                            },
+                        });
+
+                        if (closeResponse.ok) {
+                            const closeData = await closeResponse.json();
+                            alert(closeData.message);
+                            // Update the status to "Closed"
+                            document.querySelector('.list-detail').innerHTML += `<p><strong>Status:</strong> Closed</p>`;
+                        } else {
+                            const closeErrorData = await closeResponse.json();
+                            alert(closeErrorData.message);
+                        }
+                    } catch (error) {
+                        console.error('Error closing the list:', error);
+                        alert('An error occurred while closing the list. Please try again.');
+                    }
+                });
             }
+
+            // Add event listener to the "Delete List" button (always available)
+            document.getElementById('delete-list-btn').addEventListener('click', async () => {
+                const confirmDelete = confirm('Are you sure you want to delete this list? This action cannot be undone.');
+                if (!confirmDelete) return;
+
+                try {
+                    const deleteResponse = await fetch(`http://localhost:5555/list/listdelete/${listId}`, {
+                        method: 'POST',
+                        headers: {
+                            'x-auth-token': token,
+                        },
+                    });
+
+                    if (deleteResponse.ok) {
+                        const deleteData = await deleteResponse.json();
+                        alert(deleteData.message);
+                        // Redirect to another page after deletion, e.g., dashboard
+                        window.location.href = '../pages/dashboardguide.html';
+                    } else {
+                        const deleteErrorData = await deleteResponse.json();
+                        alert(deleteErrorData.message);
+                    }
+                } catch (error) {
+                    console.error('Error deleting the list:', error);
+                    alert('An error occurred while deleting the list. Please try again.');
+                }
+            });
+
+        } else {
+            const errorData = await response.json();
+            alert(errorData.message);
         }
     } catch (error) {
-        console.error('Fetch error:', error);
+        console.error('Error fetching the list details:', error);
         alert('An error occurred. Please try again later.');
     }
 });

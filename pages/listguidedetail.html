@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+
         nav {
             background-color: #007BFF;
             color: #fff;
@@ -21,7 +23,9 @@
             justify-content: center;
             gap: 10px;
         }
-        nav a, nav button {
+
+        nav a,
+        nav button {
             color: #fff;
             text-decoration: none;
             font-size: 16px;
@@ -31,23 +35,29 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         nav a {
             background-color: #0056b3;
         }
+
         nav a:hover {
             background-color: #003d7a;
         }
+
         nav button {
             background-color: #0056b3;
         }
+
         nav button:hover {
             background-color: #003d7a;
         }
+
         .container {
             padding: 20px;
             max-width: 800px;
             margin: auto;
         }
+
         .list-detail {
             background: #fff;
             padding: 20px;
@@ -55,35 +65,44 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
         .list-detail h2 {
             margin: 0;
             font-size: 1.5em;
             color: #333;
         }
+
         .list-detail p {
             margin: 5px 0;
             color: #555;
         }
+
         .list-detail p strong {
             color: #333;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
-        th, td {
+
+        th,
+        td {
             padding: 10px;
             text-align: left;
             border: 1px solid #ddd;
         }
+
         th {
             background-color: #007BFF;
             color: #fff;
         }
+
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+
         tbody:empty:before {
             content: "No tourist data available.";
             display: block;
@@ -91,12 +110,45 @@
             padding: 20px;
             color: #777;
         }
+
+        .close-list-btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .close-list-btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .delete-list-btn:hover {
+            background-color: #0056b3;
+        }
+        .close-list-btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .delete-list-btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .delete-list-btn:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
+
 <body>
     <nav>
         <a href="../index.html">Home</a>
-        <button id="create-list-button" onclick="window.location.href='listcreate.html'">Create List</button>
         <button id="logout-button">Logout</button>
     </nav>
     <div class="container">
@@ -107,7 +159,7 @@
             <p><strong>Location:</strong> <span id="list-location">Location</span></p>
             <p><strong>Status:</strong> <span id="list-status">Status</span></p>
             <p><strong>Tourists Registered:</strong> <span id="tourists-registered">0</span></p>
-            
+
             <!-- Tourist Data Table -->
             <table id="tourist-table">
                 <thead>
@@ -128,4 +180,5 @@
     </div>
     <script src="../js/listactions/listGuideDetail.js"></script>
 </body>
+
 </html>

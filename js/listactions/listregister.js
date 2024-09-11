@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Check for localStorage items
+    const token = localStorage.getItem('x-auth-token');
+    const userId = localStorage.getItem('userId');
+    const userType = localStorage.getItem('userType');
+
+    if (!token || !userId || !userType) {
+        // Show a message if user is not logged in
+        document.body.innerHTML = '<h1>User is not logged in. Please <a href="../index.html">login</a> to continue.</h1>';
+        return;
+    }
+    
     const form = document.querySelector('form');
 
     form.addEventListener('submit', async (event) => {
