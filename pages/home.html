@@ -4,68 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="../index.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f8f9fa;
         }
+
         nav {
-            background-color: #007BFF;
+            background-color: #343a40;
             color: #fff;
-            padding: 10px;
-            text-align: center;
+            padding: 15px;
             display: flex;
-            justify-content: center;
-            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
         nav h1 {
             margin: 0;
-            font-size: 1.5em;
+            font-size: 1.8em;
+            color: #f8f9fa;
         }
+
         nav button {
+            background-color: #495057;
             color: #fff;
-            background-color: #0056b3;
             border: none;
             padding: 10px 20px;
             font-size: 16px;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
+
         nav button:hover {
-            background-color: #003d7a;
+            background-color: #212529;
         }
+
         .container {
-            padding: 20px;
+            padding: 40px 20px;
             max-width: 1200px;
             margin: auto;
+            text-align: center;
         }
+
+        h1 {
+            font-size: 2.2em;
+            color: #343a40;
+            margin-bottom: 30px;
+        }
+
+        #lists-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
         .list-item {
-            background: #fff;
-            padding: 15px;
+            background-color: #fff;
+            padding: 20px;
             margin: 10px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
         }
+
         .list-item:hover {
-            background-color: #e0e0e0;
-            transform: scale(1.02);
+            background-color: #f1f3f5;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
+
         .list-item h3 {
             margin: 0;
-            font-size: 1.2em;
-            color: #333;
+            font-size: 1.4em;
+            color: #343a40;
         }
+
         .list-item p {
-            margin: 5px 0;
-            color: #555;
+            margin: 10px 0 0;
+            font-size: 1em;
+            color: #6c757d;
         }
+
         .list-item p strong {
-            color: #333;
+            color: #495057;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav button {
+                margin-top: 10px;
+            }
+
+            .list-item {
+                padding: 15px;
+            }
         }
     </style>
 </head>

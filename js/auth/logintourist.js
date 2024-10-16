@@ -24,7 +24,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
             
             alert('Login successful!');
             // Redirect to dashboard
-            window.location.href = 'dashboardtourist.html'; // Ensure the path is correct
+            window.location.href = '../pages/dashboardtourist.html'; // Ensure the path is correct
         } else {
             alert(`Error: ${result.message}`);
         }

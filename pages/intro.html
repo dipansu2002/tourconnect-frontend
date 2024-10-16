@@ -5,12 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intro</title>
+    <style>
+        body {
+    background-image: url('img1.jpeg'); /* Replace with your image path */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* Make sure this doesn't interfere with your existing content */
+}
+
+.container {
+    position: relative; /* Ensure your content stays above the background */
+    z-index: 1; /* Place content above the background */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: Add some background color with transparency to improve readability */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+    </style>
 </head>
 <body>
+<div class="container">
     <h2>What would you like to continue as?</h2>
     <div class="button-container">
         <button onclick="window.location.href='pages/logintourist.html'">Tourist</button>
         <button onclick="window.location.href='pages/loginguide.html'">Guide</button>
     </div>
+</div>
 </body>
 </html>

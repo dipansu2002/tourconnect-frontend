@@ -7,81 +7,107 @@
     <link rel="stylesheet" href="../index.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f8f9fa;
         }
+
         nav {
-            background-color: #007BFF;
+            background-color: #343a40;
             color: #fff;
-            padding: 10px;
-            text-align: center;
+            padding: 15px;
             display: flex;
-            justify-content: center;
-            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
         nav a, nav button {
             color: #fff;
             text-decoration: none;
             font-size: 16px;
-            padding: 10px 15px;
+            padding: 10px 20px;
             border: none;
-            background: none;
-            border-radius: 5px;
+            background-color: #495057;
+            border-radius: 8px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
-        nav a {
-            background-color: #0056b3;
+
+        nav a:hover, nav button:hover {
+            background-color: #212529;
         }
-        nav a:hover {
-            background-color: #003d7a;
-        }
-        nav button {
-            background-color: #0056b3;
-        }
-        nav button:hover {
-            background-color: #003d7a;
-        }
+
         .container {
-            padding: 20px;
-            max-width: 800px;
+            padding: 40px 20px;
+            max-width: 900px;
             margin: auto;
         }
+
         .list-detail {
-            background: #fff;
-            padding: 20px;
-            margin: 10px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
+
         .list-detail h2 {
-            margin: 0;
-            font-size: 1.5em;
-            color: #333;
+            font-size: 1.8em;
+            color: #343a40;
+            margin-bottom: 20px;
         }
+
         .list-detail p {
-            margin: 5px 0;
-            color: #555;
+            font-size: 1.1em;
+            color: #6c757d;
+            margin-bottom: 10px;
         }
+
         .list-detail p strong {
-            color: #333;
+            color: #495057;
         }
+
         .register-button-container {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 30px;
         }
+
         .register-button {
-            background-color: #007BFF;
+            background-color: #007bff;
             color: #fff;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 25px;
             font-size: 16px;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
         }
+
         .register-button:hover {
             background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .list-detail {
+                padding: 20px;
+            }
+
+            .list-detail h2 {
+                font-size: 1.5em;
+            }
+
+            .register-button {
+                padding: 10px 20px;
+            }
         }
     </style>
 </head>

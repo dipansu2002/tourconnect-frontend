@@ -57,14 +57,14 @@ button {
     padding: 10px;
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
+    background-color: #343a40;
     color: white;
     font-size: 16px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #495057;
 }
 
 /* Dashboard page styling */
@@ -89,3 +89,10 @@ button:hover {
     font-size: 14px;
     color: #777;
 }
+.greet{
+    color: black;
+    padding: 10px;
+    text-align: center;
+    font-size: 24px;
+}
+
